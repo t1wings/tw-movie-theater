@@ -42,6 +42,8 @@ $("#search_btn").click(function () {
             span.setAttribute("class", "glyphicon glyphicon-star-empty");
             score.appendChild(span);
         }
+    }).done(function() {
+        window.history.pushState(null, null, `/search/${document.getElementById('search_input').value}`);
     });
     $.get(`/search_movie_class?search_keywords=${keywords}`, (movies)=>{
         displayTypeInfo(movies);

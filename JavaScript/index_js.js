@@ -38,10 +38,11 @@ $("#s-qingchun").click(()=>{
         displayInfo(movies, 8);
     });
 });
-$("#s-lizhi").click(()=>{
-    $.get(`/movie_class?class_name=励志`, (movies)=>{
+$("#s-lizhi").click(()=> {
+    $.get(`/movie_class?class_name=励志`, (movies) => {
         displayInfo(movies, 9);
     });
+});
 $("#s-zhanzheng").click(()=>{
     $.get(`/movie_class?class_name=战争`, (movies)=>{
         displayInfo(movies, 10);
