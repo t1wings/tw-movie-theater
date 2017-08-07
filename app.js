@@ -16,14 +16,25 @@ app.all('*', function(req, res, next) {
     next();
 });
 
-app.get('/',function (req ,res) {
+app.get('/movie_detail.html',function (req, res) {
     res.sendFile(__dirname + '/HTML/'+'movie_detail.html');
 });
 
-app.get('/index',function (req ,res) {
+app.get('/index',function (req, res) {
     res.sendFile(__dirname + '/HTML/'+'index.html');
 });
 
+app.get('/movie',function (req, res) {
+    let movie_id=req.query.movieId;
+    db.all("select a.*,MovieComment.Content comment from (select MovieDetails.*,Movies.MovieGrade from MovieDetails,Movies WHERE Movies.MovieId=MovieDetails.MovieId and Movies.MovieId='"+movie_id+"') a ,MovieComment where MovieComment.MovieId = a.MovieId",function (err,result) {
+        if (!err) {
+            console.log(result);
+            res.send(result);
+        }
+        else
+            console.log(err);
+    });
+});
 
 app.get('/search_movie',function (req,res) {
     let movie_name =  req.query.search_keywords;
@@ -42,7 +53,7 @@ app.get('/movie_class',function (req,res) {
     db.all("select movies.*,moviedetails.imgurl from movies,moviedetails where moviedetails.movieid=movies.movieid and movieclass='"+classname+"'",function (err,result) {
         if(!err){
             res.send(result);
-            console.log(result);
+            //console.log(result);
         }
         else {
             console.log(err);

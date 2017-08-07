@@ -61,6 +61,7 @@ function displayInfo(movies, num) {
                 img = document.createElement("img"),
                 div = document.createElement("div"),
                 span = document.createElement("span");
+            a.setAttribute("href", "movie_detail.html?movieId="+movies[i * 4 + count].MovieId);
             img.setAttribute("src", movies[i * 4 + count].ImgUrl);
             div.setAttribute("class", "name");
             span.setAttribute("class", "score");
