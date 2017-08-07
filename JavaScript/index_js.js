@@ -50,7 +50,7 @@ $("#s-zhanzheng").click(()=>{
 });
 function displayInfo(movies, num) {
     let len = movies.length, trLen = parseInt(len / 4) + 1;
-    let table = document.getElementsByTagName("table")[num];
+    let table = document.getElementsByTagName("table")[num]; // 获得第num个table
     table.innerHTML = "";
     for (let i = 0; i < trLen; i++) {
         let tr = document.createElement("tr");
@@ -61,14 +61,15 @@ function displayInfo(movies, num) {
                 img = document.createElement("img"),
                 div = document.createElement("div"),
                 span = document.createElement("span");
+            a.setAttribute("href", "movie_detail.html?movieId="+movies[i * 4 + count].MovieId);
             img.setAttribute("src", movies[i * 4 + count].ImgUrl);
             div.setAttribute("class", "name");
             span.setAttribute("class", "score");
             div.innerHTML = movies[i * 4 + count].MovieName;
             span.innerHTML = "豆瓣评分:" + movies[i * 4 + count].MovieGrade + "   ";
             a.appendChild(img);
-            a.style.cursor = "pointer";
-            img.onmouseover = ()=> {
+            a.style.cursor = "pointer";  // 光标呈现为指示链接的指针（一只手）
+            img.onmouseover = ()=> {   // onmouseover 事件会在鼠标指针移动到指定的对象上时发生。
                 this.style.width = "170px";
                 this.style.height = "230px";
             };
