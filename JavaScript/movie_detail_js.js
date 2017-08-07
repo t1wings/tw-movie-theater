@@ -28,6 +28,8 @@ $("#search_btn").click(function () {
         time.innerHTML=movieInfo[0].Time;
         let words=document.getElementById("introduction-words");
         words.innerHTML=movieInfo[0].Introduction;
+        let movieComment=document.getElementById("movieComment");
+        movieComment.innerHTML=movieInfo[0].comment;
         let score=document.getElementById("score");
         score.innerHTML=`<h4>豆瓣评分:</h4>
                 <div id="scores"></div>`;
