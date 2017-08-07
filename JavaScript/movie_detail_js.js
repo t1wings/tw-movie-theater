@@ -70,13 +70,17 @@ function displayTypeInfo(movies) {
     for(let i=1;i<len;i++){
         let td = document.createElement("td"),
             img = document.createElement("img"),
+            a = document.createElement('a'),
             div = document.createElement("div");
         img.setAttribute("src", movies[i].ImgUrl);
+        a.setAttribute("href", "movie_detail.html?MovieId="+movies[i].MovieId);
+        img.style.cursor = "pointer";
         div.setAttribute("class", "name");
         div.innerHTML = movies[i].MovieName;
-        tr.appendChild(td);
-        td.appendChild(img);
+        a.appendChild(img);
+        td.appendChild(a);
         td.appendChild(div);
+        tr.appendChild(td);
     }
 }
 
