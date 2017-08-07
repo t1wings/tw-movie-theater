@@ -48,6 +48,14 @@ $("#s-zhanzheng").click(()=>{
         displayInfo(movies, 10);
     });
 });
+/*首页搜索功能,直接在当前窗口打开详情页的链接*/
+$("#search_btn").click(()=>{
+    let keywords=document.getElementById('search_input').value;
+    $.get(`/search_movie?search_keywords=${keywords}`,(movieInfo) => {
+        window.location.href=`/movie_detail.html?movieId=${movieInfo[0].MovieId}`;
+    });
+});
+
 function displayInfo(movies, num) {
     let len = movies.length, trLen = parseInt(len / 4) + 1;
     let table = document.getElementsByTagName("table")[num];
